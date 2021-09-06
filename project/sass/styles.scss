@@ -1,0 +1,110 @@
+:root {
+  // Background Colors
+
+  --bg-main: hsl(222, 26%, 31%);
+  --bg-keys: hsl(223, 31%, 20%);
+  --bg-screen: hsl(224, 36%, 15%);
+
+  // Keys Colors
+  --key-numbersAndOperators-bg: hsl(30, 25%, 89%);
+  --key-numbersAndOperators-shadow: hsl(28, 16%, 65%);
+  --key-commands-bg: hsl(225, 21%, 49%);
+  --key-commands-shadow: hsl(224, 28%, 35%);
+  --key-viewResult-bg: hsl(6, 63%, 50%);
+  --key-viewResult-shadow: hsl(6, 70%, 34%);
+
+  // Text Colors
+  --text-color-main: hsl(221, 14%, 31%);
+  --text-color-white: hsl(0, 0%, 100%);
+
+  // Numbers Font Size
+  --numbers-fz: 25px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: var(--bg-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Spartan", sans-serif;
+}
+
+.mainContainer {
+  width: 85%;
+}
+
+.header {
+  margin-bottom: 1em;
+  text-transform: capitalize;
+  color: var(--text-color-white);
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  &__title {
+    margin: 0;
+    align-self: flex-end;
+  }
+}
+
+.screen {
+  height: 66px;
+  margin-bottom: 0.7em;
+  padding: 0.7em 0.5em;
+  border-radius: 0.3em;
+  font-size: var(--numbers-fz);
+  text-align: right;
+  background-color: var(--bg-screen);
+  color: var(--text-color-white);
+}
+
+.buttonsContainer {
+  height: 50vh;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0.5em;
+  border-radius: 0.5em;
+  background-color: var(--bg-keys);
+}
+
+.button {
+  border: none;
+  border-radius: 0.2em;
+  box-shadow: inset 0 -4px var(--key-numbersAndOperators-shadow);
+  font-size: var(--numbers-fz);
+  font-family: inherit;
+  background-color: var(--key-numbersAndOperators-bg);
+  color: var(--text-color-main);
+
+  &--reset {
+    grid-column: 1 / 3;
+  }
+
+  &--command {
+    box-shadow: inset 0 -4px var(--key-commands-shadow);
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: var(--key-commands-bg);
+  }
+
+  &--equal {
+    grid-column: 3 / 5;
+    box-shadow: inset 0 -4px var(--key-viewResult-shadow);
+    font-size: 23px;
+    background-color: var(--key-viewResult-bg);
+  }
+
+  &--equal,
+  &--command {
+    color: var(--text-color-white);
+  }
+}
