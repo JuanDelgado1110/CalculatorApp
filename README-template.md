@@ -12,3 +12,11 @@ The users should be able to:
 # What did I learn, doing this?
 
 Comming Soon
+
+aprendi a hacer un addEventListener a varios elementos a la vez.
+
+a usar mejor los condicionales switch.
+
+a trabajar con el .textcontent del DOM.
+
+a usar el nesting de sass
