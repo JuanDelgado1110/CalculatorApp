@@ -14,8 +14,8 @@
   --key-viewResult-shadow: hsl(6, 70%, 34%);
 
   // Text Colors
-  --text-color-main: hsl(221, 14%, 31%);
-  --text-color-white: hsl(0, 0%, 100%);
+  --text-color-primary: hsl(0, 0%, 100%);
+  --text-color-secundary: hsl(221, 14%, 31%);
 
   // Numbers Font Size
   --numbers-fz: 25px;
@@ -26,6 +26,14 @@
 }
 
 body {
+  &.theme2 {
+    --bg-main: hsl(0, 0%, 90%);
+  }
+
+  &.theme3 {
+    --bg-main: hsl(268, 75%, 9%);
+  }
+
   height: 100vh;
   margin: 0;
   background-color: var(--bg-main);
@@ -40,9 +48,17 @@ body {
 }
 
 .header {
+  &.theme2 {
+    --text-color-primary: hsl(60, 10%, 19%);
+  }
+
+  &.theme3 {
+    --text-color-primary: hsl(52, 100%, 62%);
+  }
+
   margin-bottom: 1em;
   text-transform: capitalize;
-  color: var(--text-color-white);
+  color: var(--text-color-primary);
 
   display: flex;
   justify-content: space-between;
@@ -55,6 +71,16 @@ body {
 }
 
 .screen {
+  &.theme2 {
+    --bg-screen: hsl(0, 0%, 98%);
+    --text-color-primary: hsl(60, 10%, 19%);
+  }
+
+  &.theme3 {
+    --bg-screen: hsl(268, 71%, 12%);
+    --text-color-primary: hsl(52, 100%, 62%);
+  }
+
   height: 66px;
   margin-bottom: 0.7em;
   padding: 0.7em 0.5em;
@@ -62,10 +88,18 @@ body {
   font-size: var(--numbers-fz);
   text-align: right;
   background-color: var(--bg-screen);
-  color: var(--text-color-white);
+  color: var(--text-color-primary);
 }
 
 .buttonsContainer {
+  &.theme2 {
+    --bg-keys: hsl(0, 5%, 81%);
+  }
+
+  &.theme3 {
+    --bg-keys: hsl(268, 71%, 12%);
+  }
+
   height: 50vh;
   padding: 1em;
   display: grid;
@@ -77,13 +111,43 @@ body {
 }
 
 .button {
+  &.theme2 {
+    --key-numbersAndOperators-bg: hsl(45, 7%, 89%);
+    --key-numbersAndOperators-shadow: hsl(35, 11%, 61%);
+
+    --key-commands-bg: hsl(185, 42%, 37%);
+    --key-commands-shadow: hsl(185, 58%, 25%);
+
+    --key-viewResult-bg: hsl(25, 98%, 40%);
+    --key-viewResult-shadow: hsl(25, 99%, 27%);
+
+    --text-color-secundary: hsl(60, 10%, 19%);
+  }
+
+  &.theme3 {
+    --key-numbersAndOperators-bg: hsl(268, 47%, 21%);
+    --key-numbersAndOperators-shadow: hsl(290, 70%, 36%);
+
+    --key-commands-bg: hsl(281, 89%, 26%);
+    --key-commands-shadow: hsl(285, 91%, 52%);
+
+    --key-viewResult-bg: hsl(176, 100%, 44%);
+    --key-viewResult-shadow: hsl(177, 92%, 70%);
+
+    --text-color-secundary: hsl(52, 100%, 62%);
+  }
+
+  &--equal.theme3 {
+    --text-color-primary: hsl(198, 20%, 13%);
+  }
+
   border: none;
   border-radius: 0.2em;
   box-shadow: inset 0 -4px var(--key-numbersAndOperators-shadow);
   font-size: var(--numbers-fz);
   font-family: inherit;
   background-color: var(--key-numbersAndOperators-bg);
-  color: var(--text-color-main);
+  color: var(--text-color-secundary);
 
   &--reset {
     grid-column: 1 / 3;
@@ -105,7 +169,7 @@ body {
 
   &--equal,
   &--command {
-    color: var(--text-color-white);
+    color: var(--text-color-primary);
   }
 }
 
@@ -136,12 +200,32 @@ body {
 }
 
 .themeButton {
+  &.theme2 {
+    --bg-keys: hsl(0, 5%, 81%);
+  }
+
+  &.theme3 {
+    --bg-keys: hsl(268, 71%, 12%);
+  }
+
   height: 25px;
   width: 100%;
   position: relative;
   border: none;
   border-radius: 30px;
-  background-color: var(--bg-screen);
+  background-color: var(--bg-keys);
+
+  // PONER TRANSICION
+
+  &.theme2::before {
+    --key-viewResult-bg: hsl(25, 98%, 40%);
+    left: 30px;
+  }
+
+  &.theme3::before {
+    --key-viewResult-bg: hsl(176, 100%, 44%);
+    left: 55px;
+  }
 
   &::before {
     content: "";
