@@ -20,3 +20,7 @@ a usar mejor los condicionales switch.
 a trabajar con el .textcontent del DOM.
 
 a usar el nesting de sass
+
+a usar varibles CSS para hacer cambios de temas con JS.
+
+a usar un .gitignore
