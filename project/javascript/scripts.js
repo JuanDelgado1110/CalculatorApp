@@ -1,5 +1,7 @@
 const SCREEN = document.getElementById("screen");
 const buttons = Array.from(document.querySelectorAll("button"));
+const themeButton = document.getElementById("themeButton");
+const body = document.body;
 
 let numberToOperate1;
 let numberToOperate2;
@@ -80,3 +82,13 @@ buttons.forEach((item) => {
 // poner un mensaje de error cuando de divida entre 0
 // poner un mensaje de error cuando de NaN
 // arreglar las operaciones con ,
+
+themeButton.addEventListener("click", () => {
+  if (body.classList.length == 0) {
+    body.classList.add("theme2");
+  } else if (body.classList[0] === "theme2") {
+    body.classList.replace("theme2", "theme3");
+  } else if (body.classList[0] === "theme3") {
+    body.classList.toggle("theme3");
+  }
+});
