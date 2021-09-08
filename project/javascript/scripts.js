@@ -1,21 +1,29 @@
 const SCREEN = document.getElementById("screen");
-const buttons = Array.from(document.querySelectorAll("button"));
+const buttonsContainers = document.getElementById("buttonsContainer");
 
 let numberToOperate1;
 let numberToOperate2;
 let typeOperation;
 
-// quita el forEach
-buttons.forEach((item) => {
-  item.addEventListener("click", () => {
+buttonsContainers.addEventListener("click", (event) => {
+  if (event.target.tagName === "BUTTON") {
     let temporalValue = SCREEN.textContent;
+
+    function replaceComma() {
+      if (temporalValue.includes(",")) {
+        temporalValue = temporalValue.replace(",", ".");
+      }
+    }
 
     function saveValue() {
       SCREEN.textContent = "";
-      temporalValue != "" ? (numberToOperator1 = parseInt(temporalValue)) : (numberToOperate1 = 0);
+
+      replaceComma();
+
+      temporalValue != "" ? (numberToOperate1 = parseFloat(temporalValue)) : (numberToOperate1 = 0);
     }
 
-    switch (item.textContent) {
+    switch (event.target.textContent) {
       case "+":
         saveValue();
         typeOperation = "+";
@@ -42,6 +50,8 @@ buttons.forEach((item) => {
 
       case "reset":
         SCREEN.textContent = "";
+        numberToOperate1 = undefined;
+        numberToOperate2 = undefined;
         break;
 
       case ".":
@@ -49,34 +59,37 @@ buttons.forEach((item) => {
         break;
 
       case "=":
-        numberToOperator2 = parseFloat(temporalValue);
+        if (numberToOperate1 === undefined || numberToOperate2 === undefined) {
+          SCREEN.textContent = "Error";
+        }
+
+        replaceComma();
+
+        numberToOperate2 = parseFloat(temporalValue);
 
         switch (typeOperation) {
           case "+":
-            SCREEN.textContent = numberToOperator1 + numberToOperator2;
+            SCREEN.textContent = numberToOperate1 + numberToOperate2;
             break;
 
           case "-":
-            SCREEN.textContent = numberToOperator1 - numberToOperator2;
+            SCREEN.textContent = numberToOperate1 - numberToOperate2;
             break;
 
           case "x":
-            SCREEN.textContent = numberToOperator1 * numberToOperator2;
+            SCREEN.textContent = numberToOperate1 * numberToOperate2;
             break;
 
           case "/":
-            SCREEN.textContent = numberToOperator1 / numberToOperator2;
+            numberToOperate2 === 0 ? (SCREEN.textContent = "Error") : (SCREEN.textContent = numberToOperate1 / numberToOperate2);
             break;
         }
         break;
 
       default:
-        SCREEN.textContent += item.textContent;
+        SCREEN.textContent = "";
+        SCREEN.textContent += event.target.textContent;
         break;
     }
-  });
+  }
 });
-
-// poner un mensaje de error cuando de divida entre 0
-// poner un mensaje de error cuando de NaN
-// arreglar las operaciones con ,
