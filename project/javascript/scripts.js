@@ -87,7 +87,6 @@ buttonsContainers.addEventListener("click", (event) => {
         break;
 
       default:
-        SCREEN.textContent = "";
         SCREEN.textContent += event.target.textContent;
         break;
     }
