@@ -59,6 +59,7 @@ body {
   margin-bottom: 0.7em;
   padding: 0.7em 0.5em;
   border-radius: 0.3em;
+  overflow: scroll;
   font-size: var(--numbers-fz);
   text-align: right;
   background-color: var(--bg-screen);
@@ -85,6 +86,10 @@ body {
   background-color: var(--key-numbersAndOperators-bg);
   color: var(--text-color-main);
 
+  &:active {
+    box-shadow: inset 0 4px var(--key-numbersAndOperators-shadow);
+  }
+
   &--reset {
     grid-column: 1 / 3;
   }
@@ -94,6 +99,10 @@ body {
     font-size: 16px;
     text-transform: uppercase;
     background-color: var(--key-commands-bg);
+
+    &:active {
+      box-shadow: inset 0 4px var(--key-commands-shadow);
+    }
   }
 
   &--equal {
@@ -101,6 +110,10 @@ body {
     box-shadow: inset 0 -4px var(--key-viewResult-shadow);
     font-size: 23px;
     background-color: var(--key-viewResult-bg);
+
+    &:active {
+      box-shadow: inset 0 4px var(--key-viewResult-shadow);
+    }
   }
 
   &--equal,
@@ -153,5 +166,15 @@ body {
     display: block;
     border-radius: 50%;
     background-color: var(--key-viewResult-bg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mainContainer {
+    width: 35%;
+  }
+
+  .buttonsContainer {
+    gap: 1em;
   }
 }
