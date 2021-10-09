@@ -195,8 +195,6 @@ body {
   border-radius: 30px;
   background-color: var(--bg-keys);
 
-  // PONER TRANSICION y transform: translate()
-
   &.theme2::before {
     left: var(--buttonTheme-position);
   }
@@ -216,6 +214,17 @@ body {
     border-radius: 50%;
     background-color: var(--key-viewResult-bg);
   }
+}
+
+body,
+.header__title,
+.screen,
+.buttonsContainer,
+.button,
+.themeSwitcher__title,
+.themesOptions__number,
+.themeButton::before {
+  transition: all linear 0.5s;
 }
 
 @media screen and (min-width: 768px) {
